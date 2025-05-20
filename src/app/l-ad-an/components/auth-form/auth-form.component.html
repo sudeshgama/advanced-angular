@@ -1,0 +1,32 @@
+{{ authForm.value | json}}
+<form #authForm="ngForm"
+      (ngSubmit)="onFormSubmit(authForm.value)">
+  <ng-content select="h3"></ng-content>
+  <div class="mb-3">
+    <label for="exampleInputEmail1"
+           class="form-label">Email address</label>
+    <input type="email"
+           class="form-control"
+           name="email"
+           ngModel
+           aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1"
+           class="form-label">Password</label>
+    <input type="password"
+           class="form-control"
+           ngModel
+           name="password">
+  </div>
+
+  <ng-content select="app-auth-remember"></ng-content>
+
+  @if (showMessage) {
+  <div>
+    You login information will be saved for 30 days.
+  </div>
+  }
+
+  <ng-content select="button"></ng-content>
+</form>
